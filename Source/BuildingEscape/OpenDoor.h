@@ -21,6 +21,8 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	void OpenDoor();
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -30,5 +32,8 @@ private:
 	float OpenAngle = 90.f;         // will be visable in editor but not editable
 	
 	UPROPERTY(EditAnywhere)
-		ATriggerVolume* PressurePlate;  // visable and editable in details of opendoor in editor
+	ATriggerVolume* PressurePlate;  // visable and editable in details of opendoor in editor
+
+	UPROPERTY(EditAnywhere)
+	AActor* ActorThatOpens;      // remember pawn inherits from actor
 };
