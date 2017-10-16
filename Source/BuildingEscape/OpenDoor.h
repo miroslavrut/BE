@@ -34,6 +34,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PressurePlate;  // visable and editable in details of opendoor in editor
 
-	UPROPERTY(EditAnywhere)
+	
 	AActor* ActorThatOpens;      // remember pawn inherits from actor
 };

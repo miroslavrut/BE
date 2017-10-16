@@ -2,6 +2,8 @@
 
 #include "OpenDoor.h"
 #include "Gameframework/Actor.h"
+#include "Engine/World.h" // autocomplete for GetWorld()->...
+
 
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
@@ -19,6 +21,8 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
+	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn(); 
+	
 }
 
 void UOpenDoor::OpenDoor()
@@ -46,6 +50,5 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 		OpenDoor();
 	}
 
-		
 }
 
