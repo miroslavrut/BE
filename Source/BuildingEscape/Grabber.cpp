@@ -2,6 +2,7 @@
 
 #include "Grabber.h"
 #include "Engine/World.h"
+#include "DrawDebugHelpers.h"
 #define OUT
 
 // Sets default values for this component's properties
@@ -20,9 +21,7 @@ void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Warning, TEXT("Grabber reporting for duty!"));
-	
 }
-
 
 // Called every frame
 void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -36,15 +35,30 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		OUT PlayerViewPointLocation,
 		OUT PlayerViewPointRotation
 	);
-	// TODO Log out to test
-	UE_LOG(LogTemp, Warning, TEXT("Location: %s, Rotation: %s"),
+	// Log out to test
+/*	UE_LOG(LogTemp, Warning, TEXT("Location: %s, Rotation: %s"),
 		*PlayerViewPointLocation.ToString(),
 		*PlayerViewPointRotation.ToString()
-	)
+	) */
 
-		// Ray-cast out to reach distance
 
-		// See what what we hit
+	FVector LineTraceEnd =PlayerViewPointLocation + PlayerViewPointRotation.Vector() *Reach;
+
+	// Draw a red trace in the world to visualize
+	DrawDebugLine(
+		GetWorld(),
+		PlayerViewPointLocation,
+		LineTraceEnd,
+		FColor(255, 0, 0),
+		false,
+		0.f,
+		0.f,
+		10.f
+	);
+
+	// Ray-cast out to reach distance
+
+	// See what what we hit
 	
 }
 
