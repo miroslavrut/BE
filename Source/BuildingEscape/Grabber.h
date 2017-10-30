@@ -1,7 +1,7 @@
 // Copyright Miroslav Rutesic 2017
 #pragma once
 
-
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Grabber.generated.h"
@@ -29,4 +29,5 @@ private:
 	// How far ahead of player can we reach
 	float Reach = 100.f;
 
+	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 };
