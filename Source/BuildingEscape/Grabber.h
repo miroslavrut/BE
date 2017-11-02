@@ -29,10 +29,21 @@ private:
 	// How far ahead of player can we reach
 	float Reach = 100.f;
 
-	class UPhysicsHandleComponent* PhysicsHandle = nullptr;
-	class UInputComponent* InputComponent = nullptr;       // class added for avoiding errors,forum 83.
+	UPhysicsHandleComponent* PhysicsHandle = nullptr;
+	UInputComponent* InputComponent = nullptr;       // class added for avoiding errors,forum 83.
 
 	// Ray-cast and grab what's in reach
 	void Grab();
+
+	// Called when grab is released
 	void Release();
+
+	// Find (asumed) atached physics handle
+	void FindPhysicsHandleComponent();
+
+	// Setup (asumed) atached input component
+	void SetupInputComponent();
+
+	// Return hit for first phyics body in reach
+	FHitResult GetFirstPhyicsBodyInReach() const;
 };
